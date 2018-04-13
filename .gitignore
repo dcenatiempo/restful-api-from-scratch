@@ -3,3 +3,6 @@
 
 #ssl certificates
 https/
+
+#data files
+.data/

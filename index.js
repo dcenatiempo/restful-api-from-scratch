@@ -5,8 +5,10 @@ const http = require('http');
 const https = require('https')
 const url = require('url');
 const StringDecoder = require('string_decoder').StringDecoder;
-const config = require('./config');
-var fs = require('fs');
+const config = require('./lib/config');
+const fs = require('fs');
+const handlers = require('./lib/handlers');
+const helpers = require('./lib/helpers');
 
 // Instantiating the http server
 var httpServer = http.createServer( (req, res) => {
@@ -44,7 +46,7 @@ var unifiedServer = (req, res) => {
   var decoder = new StringDecoder('utf-8');
   var buffer = '';
   req.on('data', data => {
-    buffer += data.decoder.write;
+    buffer += decoder.write(data);
   });
   req.on('end', () => {
     buffer += decoder.end();
@@ -56,11 +58,11 @@ var unifiedServer = (req, res) => {
       'queryStringObject': queryStringObject,
       'method': method,
       'headers': headers,
-      'payload': buffer
+      'payload': helpers.parseJsonToObject(buffer)
     };
 
     chosenHandler(data, (statusCode, payload) => {
-      statusCode = typeof(statusCode) == 'number' ? statusCode : 200;
+      statusCode = typeof(statusCode) === 'number' ? statusCode : 200;
       payload = typeof(payload) === 'object' ? payload : {};
       var payloadString = JSON.stringify(payload);
       res.setHeader('Content-Type', 'application/json');
@@ -73,14 +75,7 @@ var unifiedServer = (req, res) => {
   console.log(headers);
 };
 
-var handlers = {};
-handlers.notFound = (data, callback) => {
-  callback(404);
-};
-handlers.ping = (data, callback) => {
-  callback(200);
-};
-
 var router = {
-  'ping': handlers.ping
+  'ping': handlers.ping,
+  'users': handlers.users
 }
