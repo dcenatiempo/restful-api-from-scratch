@@ -6,3 +6,6 @@ https/
 
 #data files
 .data/
+
+#log files
+.logs/
