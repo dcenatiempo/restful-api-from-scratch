@@ -2,10 +2,13 @@
 .DS_Store
 
 #ssl certificates
-https/
+https/*.*
 
 #data files
-.data/
+.data/checks/*.json
+.data/test/
+.data/tokens/*.json
+.data/users/*.json
 
 #log files
-.logs/
+.logs/*.*
