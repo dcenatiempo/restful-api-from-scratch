@@ -1,0 +1,63 @@
+<h1>{head.title}</h1>
+<h2>{head.description}</h2>
+
+<hr />
+
+<h2>Edit your account details</h2>
+
+<div class="form-wrapper">
+  <form id="accountEdit1" action="/api/users" method="PUT">
+    <input type="hidden" name="_method" value="PUT"/>
+    <div class="form-error"></div>
+    <div class="form-success">Your Changes Have Been Saved</div>
+    <input class="hiddenPhoneNumberInput"  type="hidden" name="phone" />
+    <div class="input-wrapper">
+      <div class="input-label">Phone Number</div>
+      <input class="disabled displayPhoneInput" type="text" name="displayPhone" disabled />
+    </div>
+    <div class="input-wrapper">
+      <div class="input-label">First Name</div>
+      <input class="firstNameInput" type="text" name="firstName" placeholder="John" />
+    </div>
+    <div class="input-wrapper">
+      <div class="input-label">Last Name</div>
+      <input class="lastNameInput" type="text" name="lastName" placeholder="Smith" />
+    </div>
+    <div class="input-wrapper cta-wrapper">
+      <button type="submit" class="cta green">Save Changes</button>
+    </div>
+  </form>
+</div>
+
+<hr />
+<h2>Change Your Password</h2>
+<div class="form-wrapper">
+  <form id="accountEdit2" action="/api/users" method="PUT">
+    <input type="hidden" name="_method" value="PUT"/>
+    <div class="form-error"></div>
+    <div class="form-success">Your New Password Has Been Saved</div>
+    <input class="hiddenPhoneNumberInput" type="hidden" name="phone" />
+    <div class="input-wrapper">
+      <div class="input-label">Choose a New Password</div>
+      <input type="password" name="password" placeholder="Make it a good one!" />
+    </div>
+    <div class="input-wrapper cta-wrapper">
+      <button type="submit" class="cta green">Save Password</button>
+    </div>
+  </form>
+</div>
+
+
+<hr />
+<h2>Delete Your Account</h2>
+<div class="form-wrapper">
+  <form id="accountEdit3" action="/api/users" method="DELETE">
+    <input type="hidden" name="_method" value="DELETE"/>
+    <div class="form-error"></div>
+    <div class="warning">Warning: This action cannot be undone. Dont click this button on accident!</div>
+    <input class="hiddenPhoneNumberInput" type="hidden" name="phone" />
+    <div class="input-wrapper cta-wrapper">
+      <button type="submit" class="cta red">Delete Account</button>
+    </div>
+  </form>
+</div>

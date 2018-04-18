@@ -2,26 +2,29 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="content-language" content="en-us">
-    <base href="{global.baseUrl" />
+    <base href="{global.baseUrl}" />
     <title>{head.title} | {global.appName}</title>
-    <meta name="descrition" content="{head.description}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{head.description}">
     <link type="image/x-icon" rel="icon" href="favicon.ico">
-    <script type="text/javascript" charset="utf-8" src="public/app.js"></script>
-    <link rel="stylesheet" type="text/css" href="public/app.css" />
+    <script type="text/javascript" charset="utf-8" src="./public/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="./public/app.css" />
   </head>
   <body class="{body.class}">
     <!-- page wrapper -->
     <div class="wrapper">
       <header>
-        <a class="logo" href="/"></a>
+        <a class="logo" href="/">
+          <img src="public/logo.png">
+        </a>
         <nav>
           <ul>
-            <a href="/">Home</a>
-            <a class="logged-out" href="/">Signup</a>
-            <a class="logged-out" href="/">Login</a>
-            <a class="logged-in" href="/">Dashboard</a>
-            <a class="logged-in" href="/">Account Settings</a>
-            <a class="logged-in" href="/">Logout</a>
+            <li><a href="/">Home</a></li>
+            <li class="logged-out"><a class="logged-out" href="/account/create">Signup</a></li>
+            <li class="logged-out"><a class="logged-out" href="/session/create">Login</a></li>
+            <li class="logged-in"><a class="logged-in" href="/checks/all">Dashboard</a></li>
+            <li class="logged-in"><a class="logged-in" href="/account/edit">Account Settings</a></li>
+            <li class="logged-in" ><a id="logout-button" href="/#">Logout</a></li>
           </ul>
         </nav>
       </header>
