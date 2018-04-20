@@ -58,14 +58,13 @@ app.client.request = function(headers,path,method,queryStringObject,payload,call
         var responseReturned = xhr.responseText;
 
         // Callback if requested
-        if(callback){
-          try{
+        if (callback) {
+          try {
             var parsedResponse = JSON.parse(responseReturned);
-            callback(statusCode,parsedResponse);
-          } catch(e){
-            callback(statusCode,false);
+            callback(statusCode, parsedResponse);
+          } catch(e) {
+            callback(statusCode, false);
           }
-
         }
       }
   }
